@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "F4lTfIlha9dTCEYEHi5fFiyxzSeCamD8XkkBbtQI14SuDhnAk1/g0RXTn+tn0cocYiP58veeEJVhhgAu5RPZnQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\kloem\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\minecraftWorlds\\rp2\\code_generators\\BedrockRpLib\\BedrockRpLib.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kloem\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\kloem\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
