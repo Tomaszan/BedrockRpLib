@@ -10,7 +10,7 @@ using static BedrockRpLib.PackPaths;
 
 namespace BedrockRpLib
 {
-    class TexturesList
+    public class TexturesList
     {
         public void GenerateTexturesList()
         {

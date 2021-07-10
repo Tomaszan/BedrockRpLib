@@ -10,7 +10,7 @@ using static BedrockRpLib.PackPaths;
 
 namespace BedrockRpLib.RP
 {
-    class EntityRP
+    public class EntityRP
     {
         public string formatVersion { get; set; } = "1.8.0";
         public string clientEntity { get; set; }

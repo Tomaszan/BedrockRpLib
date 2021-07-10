@@ -11,9 +11,9 @@ using System.Text;
 using System.Text.Json.Serialization;
 using static BedrockRpLib.PackPaths;
 
-namespace BedrockRpLib.RP
+namespace BedrockRpLib
 {
-    class ItemsRP
+    public class ItemsRP
     {
         public string formatVersion { get; set; } = "1.12.0";
 

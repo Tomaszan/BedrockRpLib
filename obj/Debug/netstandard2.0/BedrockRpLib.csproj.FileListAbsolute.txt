@@ -1,0 +1,9 @@
+C:\Users\kloem\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\rp2\code_generators\BedrockRpLib\bin\Debug\netstandard2.0\BedrockRpLib.deps.json
+C:\Users\kloem\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\rp2\code_generators\BedrockRpLib\bin\Debug\netstandard2.0\BedrockRpLib.dll
+C:\Users\kloem\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\rp2\code_generators\BedrockRpLib\bin\Debug\netstandard2.0\BedrockRpLib.pdb
+C:\Users\kloem\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\rp2\code_generators\BedrockRpLib\obj\Debug\netstandard2.0\BedrockRpLib.csprojAssemblyReference.cache
+C:\Users\kloem\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\rp2\code_generators\BedrockRpLib\obj\Debug\netstandard2.0\BedrockRpLib.AssemblyInfoInputs.cache
+C:\Users\kloem\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\rp2\code_generators\BedrockRpLib\obj\Debug\netstandard2.0\BedrockRpLib.AssemblyInfo.cs
+C:\Users\kloem\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\rp2\code_generators\BedrockRpLib\obj\Debug\netstandard2.0\BedrockRpLib.csproj.CoreCompileInputs.cache
+C:\Users\kloem\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\rp2\code_generators\BedrockRpLib\obj\Debug\netstandard2.0\BedrockRpLib.dll
+C:\Users\kloem\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\rp2\code_generators\BedrockRpLib\obj\Debug\netstandard2.0\BedrockRpLib.pdb

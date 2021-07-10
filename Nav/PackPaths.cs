@@ -16,25 +16,25 @@ namespace BedrockRpLib
     {
 
         // BP
-        public static string bpAnimationControllersPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\animation_controllers");
-        public static string bpAnimationsPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\animations");
-        public static string bpBlocksPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\blocks");
-        public static string bpEntitiesPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\entities");
-        public static string bpFunctionPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\function");
-        public static string bpItemsPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\items");
-        public static string bpLootTablesPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\loot_tables");
-        public static string bpRecipesPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\recipes");
-        public static string bpSpawnRulesPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\spawn_rules");
-        public static string bpTextPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\text");
+        public static string bpAnimationControllersPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\animation_controllers");
+        public static string bpAnimationsPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\animations");
+        public static string bpBlocksPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\blocks");
+        public static string bpEntitiesPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\entities");
+        public static string bpFunctionPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\function");
+        public static string bpItemsPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\items");
+        public static string bpLootTablesPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\loot_tables");
+        public static string bpRecipesPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\recipes");
+        public static string bpSpawnRulesPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\spawn_rules");
+        public static string bpTextPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"behavior_packs\0\text");
 
         // Rp
-        public static string itemTexturePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\textures\item_texture.json");
-        public static string rpTextures = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\textures");
-        public static string rpItemsPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\items");
-        public static string texturesItemPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\textures\items\custom");
-        public static string texturesListPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\textures\textures_list.json");
-        public static string rpEntityPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\entity");
-        public static string rpRenderControllersPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\render_controllers");
+        public static string itemTexturePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\textures\item_texture.json");
+        public static string rpTextures = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\textures");
+        public static string rpItemsPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\items");
+        public static string texturesItemPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\textures\items\custom");
+        public static string texturesListPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\textures\textures_list.json");
+        public static string rpEntityPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\entity");
+        public static string rpRenderControllersPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\render_controllers");
 
 
         public static List<string> filesNamesWithoutExtension { get; set; }
