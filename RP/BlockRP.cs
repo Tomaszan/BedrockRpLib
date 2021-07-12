@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿/*
+
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
@@ -15,7 +17,7 @@ namespace BedrockRpLib.RP
 {
     public static class BlockRP
     {
-        public static string[] formatVersion { get; set; } = [1, 1, 0];
+        public static string[] formatVersion { get; set; }
         public static string identifier { get; set; }
         public static string isotropic { get; set; } = "false";
         public static string sound { get; set; } = "stone";
@@ -110,3 +112,4 @@ namespace BedrockRpLib.RP
         }
     }
 }
+        */

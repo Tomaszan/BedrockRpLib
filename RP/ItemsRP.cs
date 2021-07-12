@@ -40,7 +40,7 @@ namespace BedrockRpLib
                     var fileName = FileNameWithoutExtension(item);
 
                     JObject jObjectrpItem = new JObject();
-
+                    Console.WriteLine("Ssss");
 
                     jObjectrpItem.Add("format_version", formatVersion);
 
