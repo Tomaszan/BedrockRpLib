@@ -54,7 +54,7 @@ namespace BedrockRpLib
                     description.Add(new JProperty("category", category));
 
                     JObject components = new JObject();
-                    jObjectrpItem.Add(new JProperty("components", components));
+                    minecraftItem.Add(new JProperty("components", components));
                     string minecraftIcon = fileName;
                     components.Add(new JProperty("minecraft:icon", minecraftIcon));
 

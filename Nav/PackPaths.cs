@@ -29,6 +29,7 @@ namespace BedrockRpLib
 
         // Rp
         public static string itemTexturePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\textures\item_texture.json");
+        public static string blocksJsonPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\blocks.json");
         public static string rpTextures = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\textures");
         public static string rpItemsPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\items");
         public static string texturesItemPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\textures\items\custom");
@@ -68,17 +69,23 @@ namespace BedrockRpLib
                 Directory.CreateDirectory(item3);
             }
         }
-
+        public static string BpToRpPathConvert(string bpPath)
+        {
+            var rpPath = bpPath.Replace("behavior_packs", "resource_packs")
+                               .Replace("entities", "entity")
+                               .Replace("bp", "rp")
+                               .Replace(".behavior", ".entity");
+            return rpPath;
+        }
         public static void MirrorFiles(string bpPath, string rpPath)
         {
             var bpPathsLocal = Directory.GetFiles(bpPath, "*", SearchOption.AllDirectories);
             List<string> rpPathsLocal = new List<string>();
             foreach (var item in bpPathsLocal)
             {
-                var item2 = item.Replace("behavior_packs", "resource_packs")
-                                .Replace("entities", "entity")
-                                .Replace("bp", "rp")
-                                .Replace(".behavior", ".entity");
+
+                var item2 = BpToRpPathConvert(item);
+
                 rpPathsLocal.Add(item2);
             }
             foreach (var item in rpPathsLocal)
@@ -88,15 +95,6 @@ namespace BedrockRpLib
                     File.Create(item);
                 }
             }
-            //File.Create()
-        }
-        public static string BpToRpPathConvert(string bpPath)
-        {
-            var rpPath = bpPath.Replace("behavior_packs", "resource_packs")
-                               .Replace("entities", "entity")
-                               .Replace("bp", "rp")
-                               .Replace(".behavior", ".entity");
-            return rpPath;
         }
 
     }

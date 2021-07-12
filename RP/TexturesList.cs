@@ -26,7 +26,7 @@ namespace BedrockRpLib
             }
             else
             {
-                Console.WriteLine("Something went wrong, check TexturesList class");
+                Console.WriteLine("Something went wrong, check BedrockRpLib TexturesList class");
             }
 
         }
