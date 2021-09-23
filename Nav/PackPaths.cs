@@ -36,25 +36,13 @@ namespace BedrockRpLib
         public static string texturesListPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\textures\textures_list.json");
         public static string rpEntityPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\entity");
         public static string rpRenderControllersPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\render_controllers");
+        public static string rpSoundDefinition = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\sounds\sound_definitions.json");
+        public static string rpSoundsDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\sounds");
+        public static string rpSoundsDirectoryCustom = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\sounds\custom");
 
 
         public static List<string> filesNamesWithoutExtension { get; set; }
         public static string identifierPrefix { get; set; } = "shapescape:";
-
-
-
-        public static string FileNameWithoutExtension(string path)
-        {
-
-            var lastSlash = path.LastIndexOf(@"\");
-            string fileName = path.Replace(".rp_item", "")
-                               .Replace(".item", "")
-                               .Replace(".json", "")
-                               .Substring(lastSlash)
-                               .Replace(@"\", "");
-
-            return fileName;
-        }
 
 
         public static void MirrorDirectories(string bpPath, string rpPath)
@@ -95,6 +83,23 @@ namespace BedrockRpLib
                     File.Create(item);
                 }
             }
+        }
+        public static string GetIdentifier(string bpPath)
+        {
+            string identifier = string.Empty;
+
+            var item2 = File.ReadAllText(bpPath);
+            var item3 = item2.IndexOf("\"identifier\":");
+            var item4 = item3 + 13;
+            var colon = item2.IndexOf(":", item4);
+            var item5 = colon;
+            var quotationMark = item2.IndexOf("\"", item5);
+            var stringLength = quotationMark - colon;
+            identifier = item2.Substring(colon + 1, stringLength - 1);
+
+
+            return identifier;
+
         }
 
     }

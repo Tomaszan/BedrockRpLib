@@ -27,20 +27,15 @@ namespace BedrockRpLib
         public void GenerateItemRP(string bpPath, string rpPath)
         {
             var bpPathsLocal = Directory.GetFiles(bpPath, "*", SearchOption.AllDirectories);
-            List<string> rpPathsLocal = new List<string>();
             foreach (var item in bpPathsLocal)
             {
-                rpPathsLocal.Add(BpToRpPathConvert(item));
-            }
-            foreach (var item in rpPathsLocal)
-            {
-                if (!File.Exists(item))
+                var rpPathsLocal = BpToRpPathConvert(item);
+                if (!File.Exists(rpPathsLocal))
                 {
 
-                    var fileName = FileNameWithoutExtension(item);
+                    var objectName = GetIdentifier(item);
 
                     JObject jObjectrpItem = new JObject();
-                    Console.WriteLine("Ssss");
 
                     jObjectrpItem.Add("format_version", formatVersion);
 
@@ -49,19 +44,19 @@ namespace BedrockRpLib
 
                     jObjectrpItem.Add("minecraft:item", minecraftItem);
                     minecraftItem.Add(new JProperty("description", description));
-                    string identifier = identifierPrefix + fileName;
+                    string identifier = identifierPrefix + objectName;
                     description.Add(new JProperty("identifier", identifier));
                     description.Add(new JProperty("category", category));
 
                     JObject components = new JObject();
                     minecraftItem.Add(new JProperty("components", components));
-                    string minecraftIcon = fileName;
+                    string minecraftIcon = objectName;
                     components.Add(new JProperty("minecraft:icon", minecraftIcon));
 
                     var jObjectrpItemResult = JsonConvert.SerializeObject(jObjectrpItem, Formatting.Indented);
 
 
-                    File.WriteAllText(item, jObjectrpItemResult);
+                    File.WriteAllText(rpPathsLocal, jObjectrpItemResult);
                 }
             }
 

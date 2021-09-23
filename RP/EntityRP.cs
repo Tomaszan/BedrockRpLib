@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using static BedrockRpLib.PackPaths;
 
-namespace BedrockRpLib.RP
+namespace BedrockRpLib
 {
     public class EntityRP
     {
@@ -34,25 +34,20 @@ namespace BedrockRpLib.RP
             Directory.CreateDirectory(rpEntityPath);
 
             var bpPathsLocal = Directory.GetFiles(bpPath, "*", SearchOption.AllDirectories);
-            List<string> rpPathsLocal = new List<string>();
+            
             foreach (var item in bpPathsLocal)
             {
-                rpPathsLocal.Add(BpToRpPathConvert(item));
-            }
-            foreach (var item in rpPathsLocal)
-            {
 
-                if (File.Exists(item) == true)
+                var rpPathsLocal = BpToRpPathConvert(item);
+                if (File.Exists(rpPathsLocal) == true)
                 {
-                    var fileName = FileNameWithoutExtension(item);
-
-                    Console.WriteLine($"File {fileName} already exists");
+                    var objectName = GetIdentifier(item);
                 }
-                else if (File.Exists(item) == false)
+                else if (File.Exists(rpPathsLocal) == false)
                 {
+                    var objectName = GetIdentifier(item);
 
-                    var fileName = FileNameWithoutExtension(item);
-
+                    Console.WriteLine($"File {objectName} has been created");
                     JObject jObjectEntity = new JObject();
 
 
@@ -63,7 +58,7 @@ namespace BedrockRpLib.RP
 
                     jObjectEntity.Add("minecraft:client_entity", clientEntity);
                     clientEntity.Add(new JProperty("description", description));
-                    string identifier = identifierPrefix + fileName;
+                    string identifier = identifierPrefix + objectName;
                     description.Add(new JProperty("identifier", identifier));
                     JObject spawnEgg = new JObject();
                     description.Add(new JProperty("spawn_egg", spawnEgg));
@@ -89,7 +84,7 @@ namespace BedrockRpLib.RP
 
                     var jObjectEntityResult = JsonConvert.SerializeObject(jObjectEntity, Formatting.Indented);
 
-                    File.WriteAllText(item, jObjectEntityResult);
+                    File.WriteAllText(rpPathsLocal, jObjectEntityResult);
                 }
                 else
                 {

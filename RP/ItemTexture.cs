@@ -44,11 +44,7 @@ namespace BedrockRpLib
         public JObject CreateItemTexture()
         {
             var bpPathsLocal = Directory.GetFiles(bpItemsPath, "*", SearchOption.AllDirectories);
-            List<string> rpPathsLocal = new List<string>();
-            foreach (var item in bpPathsLocal)
-            {
-                rpPathsLocal.Add(BpToRpPathConvert(item));
-            }
+
             JObject jObject = new JObject();
             JObject TextureData = new JObject();
 
@@ -57,14 +53,15 @@ namespace BedrockRpLib
             jObject.Add(new JProperty("texture_data", TextureData));
             string constantPath = "textures/items/custom/";
 
-            foreach (var pathLocal in rpPathsLocal)
+            foreach (var pathLocal in bpPathsLocal)
             {
-                var fileName = FileNameWithoutExtension(pathLocal);
+                var objectName = GetIdentifier(pathLocal);
+                var rpPathsLocal = BpToRpPathConvert(pathLocal);
 
                 JObject Item = new JObject();
-                Textures = constantPath + fileName;
+                Textures = constantPath + objectName;
                 Item.Add($"textures", Textures);
-                TextureData.Add($"{fileName}", Item);
+                TextureData.Add($"{objectName}", Item);
 
             }
             var jObjectResult = JsonConvert.SerializeObject(jObject, Formatting.Indented);
@@ -88,20 +85,20 @@ namespace BedrockRpLib
 
             foreach (var pathLocal in rpPathsLocal)
             {
-                var fileName = FileNameWithoutExtension(pathLocal);
-                if (File.ReadLines(itemTexturePath).Any(line => line.Contains(fileName)) == false)
+                var objectName = GetIdentifier(pathLocal);
+                if (File.ReadLines(itemTexturePath).Any(line => line.Contains(objectName)) == false)
                 {
                     string constantPath = "textures/items/custom/";
                     JObject Item = new JObject();
-                    Textures = constantPath + fileName;
+                    Textures = constantPath + objectName;
                     Item.Add($"textures", Textures);
                     // By this I access the proper node in the code, save it to variable and append everything I want. Thanks Will!
                     JObject textures = (JObject)jObject["texture_data"];
-                    textures.Add($"{fileName}", Item);
+                    textures.Add($"{objectName}", Item);
 
 
                 }
-                else if (File.ReadLines(itemTexturePath).Any(line => line.Contains(fileName)) == true)
+                else if (File.ReadLines(itemTexturePath).Any(line => line.Contains(objectName)) == true)
                 {
 
                 }

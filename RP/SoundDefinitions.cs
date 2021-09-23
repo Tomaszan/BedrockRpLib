@@ -1,6 +1,4 @@
-﻿/*
-
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
@@ -15,63 +13,76 @@ using static BedrockRpLib.PackPaths;
 
 namespace BedrockRpLib.RP
 {
-    public static class BlockRP
+    class SoundDefinition
     {
-        public static string[] formatVersion { get; set; }
-        public static string identifier { get; set; }
-        public static string isotropic { get; set; } = "false";
-        public static string sound { get; set; } = "stone";
-        public static string textures { get; set; }
 
+        public string formatVersion { get; set; } = "1.8.0";
+        public string category { get; set; } = "neutral";
+        public string sounds { get; set; }
+        public string name { get; set; }
 
-
-        public void GenerateBlocksJson()
+        public void GenerateSoundDefinitions()
         {
-            var blocksJsonExists = File.Exists(blocksJsonPath);
-            if (blocksJsonExists == true)
+            Directory.CreateDirectory(rpSoundsDirectory);
+            var soundDefinitionsExist = File.Exists(rpSoundDefinition);
+            if (soundDefinitionsExist == true)
             {
-                AppendBlocksJson();
+                AppendSoundDefinitions();
             }
-            else if (blocksJsonExists == false)
+            else if (soundDefinitionsExist == false)
             {
-                CreateBlocksJson();
+                CreateSoundDefinitions();
             }
             else
             {
-                Console.WriteLine("Something went wrong, check BlockRP class");
+                Console.WriteLine("Something went wrong, check SoundDefinitions class");
             }
         }
-        public JObject CreateBlocksJson()
+        public JObject CreateSoundDefinitions()
         {
-            var bpPathsLocal = Directory.GetFiles(bpBlocksPath, "*", SearchOption.AllDirectories);
-            List<string> rpPathsLocal = new List<string>();
-            foreach (var item in bpPathsLocal)
-            {
-                rpPathsLocal.Add(BpToRpPathConvert(item));
-            }
+            var rpPathsLocal = Directory.GetFiles(rpSoundsDirectoryCustom, "*", SearchOption.AllDirectories);
+            
             JObject jObject = new JObject();
-            JObject TextureData = new JObject();
+            JObject formatVersion = new JObject();
+            JObject soundDefinitions = new JObject();
+            JObject Sound = new JObject();
 
             jObject.Add("format_version", formatVersion);
-            jObject.Add("texture_name", TextureName);
-            jObject.Add(new JProperty("texture_data", TextureData));
-            string constantPath = "textures/items/custom/";
+            jObject.Add(new JProperty("sound_definitions", soundDefinitions));
 
             foreach (var pathLocal in rpPathsLocal)
             {
-                var objectName = GetIdentifier(pathLocal);
+                var objectName = Path.GetFileName(pathLocal);
 
-                JObject Item = new JObject();
-                Textures = constantPath + objectName;
-                Item.Add($"textures", Textures);
-                TextureData.Add($"{objectName}", Item);
+                // Changing path to get relative path to the file
+                int item1 = pathLocal.IndexOf("sounds/custom/");
+                string soundPath = pathLocal.Substring(item1);
+
+
+                JObject Name = new JObject();
+                JArray Sounds = new JArray() { };
+
+
+
+                Name = soundPath;
+
+                soundDefinitions.Add($"{objectName}", Sound);
+                Sound.Add($"category", category);
+                Sound.Add(new JProperty("sounds", Sounds));
+
+
+
+
+
+
+
 
             }
             var jObjectResult = JsonConvert.SerializeObject(jObject, Formatting.Indented);
             File.WriteAllText(itemTexturePath, jObjectResult);
             return jObject;
         }
-        public JObject AppendBlocksJson()
+        public JObject AppendSoundDefinitions()
         {
 
 
@@ -112,4 +123,3 @@ namespace BedrockRpLib.RP
         }
     }
 }
-        */
