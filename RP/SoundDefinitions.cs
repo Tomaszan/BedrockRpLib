@@ -11,14 +11,14 @@ using System.Text;
 using System.Text.Json.Serialization;
 using static BedrockRpLib.PackPaths;
 
-namespace BedrockRpLib.RP
+namespace BedrockRpLib
 {
-    class SoundDefinition
+    public class SoundDefinition
     {
 
         public string formatVersion { get; set; } = "1.8.0";
         public string category { get; set; } = "neutral";
-        public string sounds { get; set; }
+        public JArray[] sounds { get; set; }
         public string name { get; set; }
 
         public void GenerateSoundDefinitions()
@@ -43,7 +43,6 @@ namespace BedrockRpLib.RP
             var rpPathsLocal = Directory.GetFiles(rpSoundsDirectoryCustom, "*", SearchOption.AllDirectories);
             
             JObject jObject = new JObject();
-            JObject formatVersion = new JObject();
             JObject soundDefinitions = new JObject();
             JObject Sound = new JObject();
 
@@ -52,23 +51,30 @@ namespace BedrockRpLib.RP
 
             foreach (var pathLocal in rpPathsLocal)
             {
-                var objectName = Path.GetFileName(pathLocal);
+                var objectName = "custom." + Path.GetFileNameWithoutExtension(pathLocal);
 
                 // Changing path to get relative path to the file
-                int item1 = pathLocal.IndexOf("sounds/custom/");
-                string soundPath = pathLocal.Substring(item1);
+                int item1 = pathLocal.IndexOf(@"sounds\custom\");
+                string soundPath = pathLocal.Substring(item1)
+                                            .Replace("\\", "/")
+                                            .Replace(".ogg", "")
+                                            .Replace(".mp3", "")
+                                            .Replace(".wav", "");
 
 
-                JObject Name = new JObject();
-                JArray Sounds = new JArray() { };
 
+                JArray sounds = new JArray();
+                JObject SoundName = new JObject();
 
+                name = soundPath;
 
-                Name = soundPath;
+                SoundName.Add("name", name);
 
                 soundDefinitions.Add($"{objectName}", Sound);
                 Sound.Add($"category", category);
-                Sound.Add(new JProperty("sounds", Sounds));
+                sounds.Add(SoundName);
+                Sound.Add(new JProperty("sounds", sounds));
+
 
 
 
@@ -79,7 +85,8 @@ namespace BedrockRpLib.RP
 
             }
             var jObjectResult = JsonConvert.SerializeObject(jObject, Formatting.Indented);
-            File.WriteAllText(itemTexturePath, jObjectResult);
+            //File.WriteAllText(itemTexturePath, jObjectResult);
+            Console.WriteLine(jObjectResult);
             return jObject;
         }
         public JObject AppendSoundDefinitions()
@@ -104,8 +111,6 @@ namespace BedrockRpLib.RP
                 {
                     string constantPath = "textures/items/custom/";
                     JObject Item = new JObject();
-                    Textures = constantPath + objectName;
-                    Item.Add($"textures", Textures);
                     // By this I access the proper node in the code, save it to variable and append everything I want. Thanks Will!
                     JObject textures = (JObject)jObject["texture_data"];
                     textures.Add($"{objectName}", Item);
