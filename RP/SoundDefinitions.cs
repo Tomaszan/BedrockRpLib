@@ -24,7 +24,7 @@ namespace BedrockRpLib
         public void GenerateSoundDefinitions()
         {
             Directory.CreateDirectory(rpSoundsDirectory);
-            var soundDefinitionsExist = File.Exists(rpSoundDefinition);
+            var soundDefinitionsExist = File.Exists(rpSoundDefinitions);
             if (soundDefinitionsExist == true)
             {
                 AppendSoundDefinitions();
@@ -75,55 +75,54 @@ namespace BedrockRpLib
                 sounds.Add(SoundName);
                 Sound.Add(new JProperty("sounds", sounds));
 
-
-
-
-
-
-
-
-
             }
             var jObjectResult = JsonConvert.SerializeObject(jObject, Formatting.Indented);
-            //File.WriteAllText(itemTexturePath, jObjectResult);
-            Console.WriteLine(jObjectResult);
+            File.WriteAllText(rpSoundDefinitions, jObjectResult);
             return jObject;
         }
         public JObject AppendSoundDefinitions()
         {
 
 
-            var jObject = JObject.Parse(File.ReadAllText(itemTexturePath));
+            var jObject = JObject.Parse(File.ReadAllText(rpSoundDefinitions));
 
+            JObject Sound = new JObject();
 
-            var bpPathsLocal = Directory.GetFiles(bpItemsPath, "*", SearchOption.AllDirectories);
-            List<string> rpPathsLocal = new List<string>();
-            foreach (var item in bpPathsLocal)
-            {
-
-                rpPathsLocal.Add(BpToRpPathConvert(item));
-            }
+            var rpPathsLocal = Directory.GetFiles(rpSoundsDirectoryCustom, "*", SearchOption.AllDirectories);
 
             foreach (var pathLocal in rpPathsLocal)
             {
-                var objectName = GetIdentifier(pathLocal);
-                if (File.ReadLines(itemTexturePath).Any(line => line.Contains(objectName)) == false)
+                var objectName = "custom." + Path.GetFileNameWithoutExtension(pathLocal);
+                if (File.ReadLines(rpSoundDefinitions).Any(line => line.Contains(objectName)) == false)
                 {
-                    string constantPath = "textures/items/custom/";
-                    JObject Item = new JObject();
+                    // Changing path to get relative path to the file
+                    int item1 = pathLocal.IndexOf(@"sounds\custom\");
+                    string soundPath = pathLocal.Substring(item1)
+                                                .Replace("\\", "/")
+                                                .Replace(".ogg", "")
+                                                .Replace(".mp3", "")
+                                                .Replace(".wav", "");
+                    // Creating certain music file .json object
+                    JArray sounds = new JArray();
+                    JObject SoundName = new JObject();
+
+                    name = soundPath;
+
+                    SoundName.Add("name", name);
+
+                    Sound.Add($"category", category);
+                    sounds.Add(SoundName);
+                    Sound.Add(new JProperty("sounds", sounds));
+
                     // By this I access the proper node in the code, save it to variable and append everything I want. Thanks Will!
-                    JObject textures = (JObject)jObject["texture_data"];
-                    textures.Add($"{objectName}", Item);
+                    JObject soundDefinitions = (JObject)jObject["sound_definitions"];
+                    soundDefinitions.Add($"{objectName}", Sound);
 
-
-                }
-                else if (File.ReadLines(itemTexturePath).Any(line => line.Contains(objectName)) == true)
-                {
 
                 }
             }
             var jObjectResult = JsonConvert.SerializeObject(jObject, Formatting.Indented);
-            File.WriteAllText(itemTexturePath, jObjectResult);
+            File.WriteAllText(rpSoundDefinitions, jObjectResult);
             return jObject;
         }
     }

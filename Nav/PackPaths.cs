@@ -36,7 +36,7 @@ namespace BedrockRpLib
         public static string texturesListPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\textures\textures_list.json");
         public static string rpEntityPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\entity");
         public static string rpRenderControllersPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\render_controllers");
-        public static string rpSoundDefinition = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\sounds\sound_definitions.json");
+        public static string rpSoundDefinitions = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\sounds\sound_definitions.json");
         public static string rpSoundsDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\sounds");
         public static string rpSoundsDirectoryCustom = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, @"resource_packs\0\sounds\custom");
 
