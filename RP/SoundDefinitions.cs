@@ -16,7 +16,7 @@ namespace BedrockRpLib
     public class SoundDefinition
     {
 
-        public string formatVersion { get; set; } = "1.8.0";
+        public string formatVersion { get; set; } = "1.14.0";
         public string category { get; set; } = "neutral";
         public JArray[] sounds { get; set; }
         public string name { get; set; }
@@ -44,17 +44,25 @@ namespace BedrockRpLib
             
             JObject jObject = new JObject();
             JObject soundDefinitions = new JObject();
-            JObject Sound = new JObject();
+            
 
             jObject.Add("format_version", formatVersion);
             jObject.Add(new JProperty("sound_definitions", soundDefinitions));
 
             foreach (var pathLocal in rpPathsLocal)
             {
-                var objectName = "custom." + Path.GetFileNameWithoutExtension(pathLocal);
+                JObject Sound = new JObject();
+
+
+                int item1 = pathLocal.IndexOf(@"sounds\custom\");
+
+                string objectName = "custom." + pathLocal.Substring(item1 + 14)
+                                                         .Replace("\\", ".")
+                                                         .Replace(".ogg", "")
+                                                         .Replace(".mp3", "")
+                                                         .Replace(".wav", "");
 
                 // Changing path to get relative path to the file
-                int item1 = pathLocal.IndexOf(@"sounds\custom\");
                 string soundPath = pathLocal.Substring(item1)
                                             .Replace("\\", "/")
                                             .Replace(".ogg", "")
@@ -86,17 +94,29 @@ namespace BedrockRpLib
 
             var jObject = JObject.Parse(File.ReadAllText(rpSoundDefinitions));
 
-            JObject Sound = new JObject();
+            
 
             var rpPathsLocal = Directory.GetFiles(rpSoundsDirectoryCustom, "*", SearchOption.AllDirectories);
 
             foreach (var pathLocal in rpPathsLocal)
             {
-                var objectName = "custom." + Path.GetFileNameWithoutExtension(pathLocal);
+                // Creating sound object, new/overwriting for every sound
+                JObject Sound = new JObject();
+
+
+                int item1 = pathLocal.IndexOf(@"sounds\custom\");
+
+
+                string objectName = "custom." + pathLocal.Substring(item1 + 14)
+                                                         .Replace("\\", ".")
+                                                         .Replace(".ogg", "")
+                                                         .Replace(".mp3", "")
+                                                         .Replace(".wav", "");
+
                 if (File.ReadLines(rpSoundDefinitions).Any(line => line.Contains(objectName)) == false)
                 {
-                    // Changing path to get relative path to the file
-                    int item1 = pathLocal.IndexOf(@"sounds\custom\");
+                    // Changing path to get relative path to the file                     ### WARNING, CHECK IF THE PATH HERE IS CORRECT, it has to be custom because of rpPathsLocal variable###
+                    
                     string soundPath = pathLocal.Substring(item1)
                                                 .Replace("\\", "/")
                                                 .Replace(".ogg", "")
@@ -109,7 +129,8 @@ namespace BedrockRpLib
                     name = soundPath;
 
                     SoundName.Add("name", name);
-
+                    // var jObjectResult = JsonConvert.SerializeObject(jObject, Formatting.Indented);
+                    // Console.WriteLine(jObjectResult);
                     Sound.Add($"category", category);
                     sounds.Add(SoundName);
                     Sound.Add(new JProperty("sounds", sounds));
