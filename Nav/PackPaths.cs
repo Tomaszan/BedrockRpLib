@@ -51,7 +51,7 @@ namespace BedrockRpLib
             var subDirectories = Directory.GetDirectories(bpPath, "*", SearchOption.AllDirectories);
             foreach (var item in subDirectories)
             {
-                var item2 = item.Replace(bpItemsPath, "")
+                var item2 = item.Replace(bpPath, "")
                                 .Replace("entities", "entity")
                                 .Substring(1);
                 var item3 = Path.Combine(rpPath, item2);
@@ -62,6 +62,7 @@ namespace BedrockRpLib
         {
             var rpPath = bpPath.Replace("behavior_packs", "resource_packs")
                                .Replace("entities", "entity")
+                               .Replace(".bp_item", ".item")
                                .Replace("bp", "rp")
                                .Replace(".behavior", ".entity");
             return rpPath;

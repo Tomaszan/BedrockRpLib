@@ -54,7 +54,7 @@ namespace BedrockRpLib
                 JObject Sound = new JObject();
 
 
-                int item1 = pathLocal.IndexOf(@"sounds\custom\");
+                int item1 = pathLocal.IndexOf(@"sounds\dialogue\");
 
                 string objectName = "custom." + pathLocal.Substring(item1 + 14)
                                                          .Replace("\\", ".")
@@ -96,7 +96,7 @@ namespace BedrockRpLib
 
             
 
-            var rpPathsLocal = Directory.GetFiles(rpSoundsDirectoryCustom, "*", SearchOption.AllDirectories);
+            var rpPathsLocal = Directory.GetFiles(@"C:\Users\kloem\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\Eternity\resource_packs\0\sounds\dialogue", "*", SearchOption.AllDirectories);
 
             foreach (var pathLocal in rpPathsLocal)
             {
@@ -104,7 +104,7 @@ namespace BedrockRpLib
                 JObject Sound = new JObject();
 
 
-                int item1 = pathLocal.IndexOf(@"sounds\custom\");
+                int item1 = pathLocal.IndexOf(@"sounds\dialogue\");
 
 
                 string objectName = "custom." + pathLocal.Substring(item1 + 14)
@@ -115,8 +115,8 @@ namespace BedrockRpLib
 
                 if (File.ReadLines(rpSoundDefinitions).Any(line => line.Contains(objectName)) == false)
                 {
-                    // Changing path to get relative path to the file                     ### WARNING, CHECK IF THE PATH HERE IS CORRECT, it has to be custom because of rpPathsLocal variable###
-                    
+                    // Changing path to get relative path to the file                     ### WARNING, CHECK IF THE PATH HERE IS CORRECT, it has to be custom because of rpPathsLocal variable### issue with rpSoundsDirectoryCustom
+
                     string soundPath = pathLocal.Substring(item1)
                                                 .Replace("\\", "/")
                                                 .Replace(".ogg", "")
